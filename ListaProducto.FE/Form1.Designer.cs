@@ -199,6 +199,7 @@
             this.DGVProductos.Size = new System.Drawing.Size(461, 304);
             this.DGVProductos.TabIndex = 19;
             this.DGVProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProductos_CellContentClick);
+            this.DGVProductos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProductos_CellEnter);
             // 
             // Form1
             // 

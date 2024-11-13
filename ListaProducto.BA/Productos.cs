@@ -61,34 +61,50 @@ namespace ListaProducto.BA
             Lista.WriteXml("Productos.xml");
         }
 
-        //public void Actualizar(string codigo,
-        //                string descripcion,
-        //                string cantidad,
-        //                string unmed,
-        //                string precio)
-        //{
-        //    Producto producto = new Producto();
-        //}
-        public void Borrar(Producto prB)
+        public void Actualizar(Producto producto)
         {
-            
+            DataRow[] filas = Lista.Select($"Codigo = {producto}");
+            foreach (DataRow fila in filas)
+            {
+                fila[1] = producto.Descripcion;
+                fila[1] = producto.Descripcion;
+                fila[2] = producto.Cantidad;
+                fila[3] = producto.UnMed;
+                fila[4] = producto.Precio;
+             
+            }
+            Lista.WriteXml("Productos.xml");
         }
-        //public Producto Buscar(string prB)
-        //{
-        //    Producto prB = Lista;
-        //
-        //    if (prB != null)
-        //    {
-        //        txtNombre.Text = perF.Nombre;
-        //        txtApellido.Text = perF.Apellido;
-        //        txtEdad.Text = perF.Edad.ToString();
-        //
-        //        txtNombre.Focus();
-        //    }
-        //    else
-        //    {
-        //        
-        //    }
-        //}
-    }
-}
+
+        public void Borrar(int idaeliminar)
+        {
+            //Encontrar y eliminar la fila
+            DataRow[] filas = Lista.Select($"Codigo = {idaeliminar}");
+            foreach (DataRow fila in filas)
+            {
+                Lista.Rows.Remove(fila);
+            }
+
+            // Guardar los cambios en el archivo XML
+            Lista.WriteXml("Productos.xml");
+        }
+         //public Producto Buscar(string prB)
+         //{
+         //    Producto prB = Lista;
+         //
+         //    if (prB != null)
+         //    {
+         //        txtNombre.Text = perF.Nombre;
+         //        txtApellido.Text = perF.Apellido;
+         //        txtEdad.Text = perF.Edad.ToString();
+         //
+         //        txtNombre.Focus();
+         //    }
+         //    else
+         //    {
+         //        
+         //    }
+         //}
+    }    //
+}        //
+         //

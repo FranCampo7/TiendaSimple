@@ -50,23 +50,19 @@ namespace ListaProducto.FE
 
         private void btActualizar_Click(object sender, EventArgs e)
         {
-            //Producto apr = new Producto(txtCodigo.Text,
-            //                            txtDescripcion.Text,
-            //                            txtUnMed.Text,
-            //                            txtCantidad.Text,
-            //                            txtPrecio.Text);
-            //
-            //Productos.Actualizar(apr);
+            Producto apr = new Producto(Convert.ToInt32(DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[0].Value),
+                                                         txtDescripcion.Text,
+                                                         txtCantidad.Text,
+                                                         txtUnMed.Text,
+                                                         txtPrecio.Text);
+            
+            Productos.Actualizar(apr);
         }
 
         private void btBorrar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(DGVProductos.CurrentCell.RowIndex.ToString());
-            Producto prBorrar = new Producto(Convert.ToInt32(DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[0].Value),
-                                             DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[1].Value.ToString(),
-                                             DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[2].Value.ToString(),
-                                             DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[3].Value.ToString(),
-                                             DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[4].Value.ToString());
+            Productos.Borrar(Convert.ToInt32(DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[0].Value)); 
+            
         }
 
         private void btBuscar_Click(object sender, EventArgs e)
@@ -104,6 +100,14 @@ namespace ListaProducto.FE
         private void DGVProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void DGVProductos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            txtDescripcion.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            txtCantidad.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[2].Value.ToString();
+            txtUnMed.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[3].Value.ToString();
+            txtPrecio.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[4].Value.ToString();
         }
     }
 }
