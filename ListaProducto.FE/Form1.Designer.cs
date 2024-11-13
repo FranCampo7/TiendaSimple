@@ -33,12 +33,10 @@
             this.btBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btBorrar = new System.Windows.Forms.Button();
-            this.lblCodigo = new System.Windows.Forms.Label();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.lblUnMed = new System.Windows.Forms.Label();
             this.lblPrecio = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtUnMed = new System.Windows.Forms.TextBox();
@@ -46,7 +44,8 @@
             this.lblPRactual = new System.Windows.Forms.Label();
             this.lblMostrar = new System.Windows.Forms.Label();
             this.lblPR = new System.Windows.Forms.Label();
-            this.txtbListado = new System.Windows.Forms.TextBox();
+            this.DGVProductos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // btAgregar
@@ -97,16 +96,6 @@
             this.btBorrar.UseVisualStyleBackColor = true;
             this.btBorrar.Click += new System.EventHandler(this.btBorrar_Click);
             // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(47, 144);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(43, 13);
-            this.lblCodigo.TabIndex = 6;
-            this.lblCodigo.Text = "Codigo:";
-            this.lblCodigo.Click += new System.EventHandler(this.lblCodigo_Click);
-            // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
@@ -143,13 +132,6 @@
             this.lblPrecio.Size = new System.Drawing.Size(40, 13);
             this.lblPrecio.TabIndex = 10;
             this.lblPrecio.Text = "Precio:";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(156, 137);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(155, 20);
-            this.txtCodigo.TabIndex = 11;
             // 
             // txtDescripcion
             // 
@@ -190,7 +172,7 @@
             // lblMostrar
             // 
             this.lblMostrar.AutoSize = true;
-            this.lblMostrar.Location = new System.Drawing.Point(426, 60);
+            this.lblMostrar.Location = new System.Drawing.Point(448, 92);
             this.lblMostrar.Name = "lblMostrar";
             this.lblMostrar.Size = new System.Drawing.Size(31, 13);
             this.lblMostrar.TabIndex = 17;
@@ -200,28 +182,30 @@
             // lblPR
             // 
             this.lblPR.AutoSize = true;
-            this.lblPR.Location = new System.Drawing.Point(343, 60);
+            this.lblPR.Location = new System.Drawing.Point(356, 92);
             this.lblPR.Name = "lblPR";
             this.lblPR.Size = new System.Drawing.Size(86, 13);
             this.lblPR.TabIndex = 18;
             this.lblPR.Text = "Producto Actual:";
             this.lblPR.Click += new System.EventHandler(this.lblPR_Click);
             // 
-            // txtbListado
+            // DGVProductos
             // 
-            this.txtbListado.Location = new System.Drawing.Point(346, 137);
-            this.txtbListado.Multiline = true;
-            this.txtbListado.Name = "txtbListado";
-            this.txtbListado.Size = new System.Drawing.Size(442, 243);
-            this.txtbListado.TabIndex = 19;
-            this.txtbListado.TextChanged += new System.EventHandler(this.txtbListado_TextChanged);
+            this.DGVProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVProductos.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DGVProductos.Location = new System.Drawing.Point(327, 122);
+            this.DGVProductos.Name = "DGVProductos";
+            this.DGVProductos.ReadOnly = true;
+            this.DGVProductos.Size = new System.Drawing.Size(461, 304);
+            this.DGVProductos.TabIndex = 19;
+            this.DGVProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProductos_CellContentClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtbListado);
+            this.Controls.Add(this.DGVProductos);
             this.Controls.Add(this.lblPR);
             this.Controls.Add(this.lblMostrar);
             this.Controls.Add(this.lblPRactual);
@@ -229,12 +213,10 @@
             this.Controls.Add(this.txtUnMed);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblUnMed);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblDescripcion);
-            this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btBorrar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btBuscar);
@@ -243,6 +225,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGVProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,12 +238,10 @@
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btBorrar;
-        private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Label lblUnMed;
         private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.TextBox txtUnMed;
@@ -268,7 +249,7 @@
         private System.Windows.Forms.Label lblPRactual;
         private System.Windows.Forms.Label lblMostrar;
         private System.Windows.Forms.Label lblPR;
-        private System.Windows.Forms.TextBox txtbListado;
+        private System.Windows.Forms.DataGridView DGVProductos;
     }
 }
 

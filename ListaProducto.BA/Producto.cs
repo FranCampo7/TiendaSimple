@@ -9,7 +9,9 @@ namespace ListaProducto.BA
 {
     public class Producto
     {
-        public string Codigo { get; set; }
+        private string text;
+
+        public int Codigo { get; set; }
         public string Descripcion { get; set; } 
         public decimal Cantidad { get; set; }
         public string UnMed { get; set; }
@@ -19,7 +21,7 @@ namespace ListaProducto.BA
         {
             
         }
-        public Producto(string codigo,
+        public Producto(int codigo,
                         string descripcion,
                         string cantidad,
                         string unmed,
@@ -32,13 +34,23 @@ namespace ListaProducto.BA
             Cantidad    = Convert.ToDecimal(cantidad);
             Precio      = Convert.ToDecimal(precio);
         }
+
+        public Producto(string text)
+        {
+            this.text = text;
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+
+            res =   "Codigo: " + Codigo + " " +
+                    "Descripcion: " + Descripcion + " " +
+                    "Unidad de medida: " + UnMed + " " +
+                    "Cantidad: " + Cantidad.ToString() + " " +
+                    "Precio: " + Precio.ToString();
+            return res; 
+        }
     }
 }
 
-//for (int i = 0; i < listado.Length; i++)
-//{
-//    if (listado[i] != null)
-//    {
-//        lista.Text += $"peso (kg):{listado[i].peso}\t\naltura(cm):{listado[i].altura}" +
-//            $"\t\nimc:{listado[i].imc}\t\ncategoria:{listado[i].categoria}\t\n\t\n";
-//    }
