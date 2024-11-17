@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace ListaProducto.FE
 {
-    public partial class Form1 : Form
+    public partial class frmProductos : Form
     {
         public Productos Productos { get; set; } = new Productos();
 
 
-        public Form1()
+        public frmProductos()
         {
             InitializeComponent();
 
@@ -67,9 +67,7 @@ namespace ListaProducto.FE
 
         private void btBuscar_Click(object sender, EventArgs e)
         {
-            //Producto prB = new Producto(txtBuscar.Text);
-            //
-            //Productos.Buscar(prB);
+            Productos.Buscar(txtBuscar.Text);
         }
 
         private void lblCodigo_Click(object sender, EventArgs e)
@@ -108,6 +106,16 @@ namespace ListaProducto.FE
             txtCantidad.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[2].Value.ToString();
             txtUnMed.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[3].Value.ToString();
             txtPrecio.Text = DGVProductos.Rows[DGVProductos.CurrentCell.RowIndex].Cells[4].Value.ToString();
+        }
+
+        private void lblUnMed_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

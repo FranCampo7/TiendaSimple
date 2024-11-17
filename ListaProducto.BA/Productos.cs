@@ -63,7 +63,7 @@ namespace ListaProducto.BA
 
         public void Actualizar(Producto producto)
         {
-            DataRow[] filas = Lista.Select($"Codigo = {producto}");
+            DataRow[] filas = Lista.Select($"Codigo = {producto.Codigo}");
             foreach (DataRow fila in filas)
             {
                 fila[1] = producto.Descripcion;
@@ -88,23 +88,20 @@ namespace ListaProducto.BA
             // Guardar los cambios en el archivo XML
             Lista.WriteXml("Productos.xml");
         }
-         //public Producto Buscar(string prB)
-         //{
-         //    Producto prB = Lista;
-         //
-         //    if (prB != null)
-         //    {
-         //        txtNombre.Text = perF.Nombre;
-         //        txtApellido.Text = perF.Apellido;
-         //        txtEdad.Text = perF.Edad.ToString();
-         //
-         //        txtNombre.Focus();
-         //    }
-         //    else
-         //    {
-         //        
-         //    }
-         //}
-    }    //
-}        //
-         //
+        public void Buscar(string condicion)
+         {
+            if (condicion != "")
+            {
+                Lista.DefaultView.RowFilter = $"Codigo = '{condicion}'";
+                
+
+
+            }
+            else 
+            {
+                Lista.DefaultView.RowFilter = "";
+            }
+         }
+    }    
+}        
+         
